@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LoreDB</title>
+    <style>
+        @font-face {
+            font-family: "Schoolbook";
+            src: url("fonts/texgyreschola-regular.otf"),
+                url("fonts/texgyreschola-italic.otf"),
+                url("fonts/texgyreschola-bolditalic.otf"),
+                url("fonts/texgyreschola-bold.otf");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            font-family: "Schoolbook";
+            overflow: hidden;
+            font-size: 1.3rem;
+            color: #707070;
+            user-select: none;
+        }
+
+        body {
+            background-color: #F9F2E4;
+            display: grid;
+            height: 100vh;
+            grid-template:
+                'header' 40px 
+                'content' 1fr; 
+        }
+
+        #header {
+            grid-area: header;
+            height: 100%;
+            width: 100%;
+            background-color: #FFFFFF;
+            border: 1px solid #707070;
+            display: grid;
+            grid-template:
+            "a b c d ."
+            / 0.3fr 1fr 1fr 1fr 5fr;
+            justify-items: stretch;
+            justify-content: stretch;
+        }
+
+        .headeritem {
+            display: flex;
+            border-inline: 1px solid #707070;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .headeritem svg {
+            height: 70%;
+            width: auto;
+        }
+
+        .contentWrapper {
+            display: grid;
+            grid-area: content;
+            background-color: #F9F2E4;;
+            grid-template: 
+            ". . ." 0.2fr
+            ". contents ." 2fr
+            ". . ." 0.2fr
+            / 0.1fr 1fr 0.1fr;
+        }
+
+        .content {
+            padding: 10px;
+            grid-area: contents;
+            display: grid;
+            grid-template: 
+            "createnew createnew createnew createnew" 0.3fr
+            "title theme . ." 2fr
+            ". create create ." 1fr
+            / 1fr 1fr 1fr 1fr;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid black;
+            column-gap: 10px;
+        }
+
+        .content > div {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .content * {
+            font-size: 16px;
+        }
+
+        .title {
+            
+            grid-area: title;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: left;
+            /* background-color: darkturquoise; */
+        }
+
+        .theme {
+            grid-area: theme;
+            flex-direction: column;
+            justify-content:space-evenly;
+            align-items: left;
+            /* background-color: rgb(206, 36, 36); */
+        }
+
+        .createBtn {
+            grid-area: create;
+
+            justify-content: center;
+            align-items: center;
+
+            /* background-color: darkviolet; */
+        }
+
+        select, input:not([type='button']) {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #707070;
+        }
+
+        input[type='button'] {
+            border: 1px solid #707070;
+            background-color: white;
+            height: 40px;
+            width: 90px;
+        }
+
+        input[type='button']:hover {
+            background-color: rgb(226, 226, 226);
+            cursor:pointer;
+        }
+
+        input[type="button"]:active {
+            background-color: rgb(211, 211, 211);
+        }
+
+        label {
+            font-size: 20px !important;
+        }
+
+        #themeImage {
+            height: 60%;
+            width: 100%;
+            border: 1px solid #707070;
+            margin-top: 10px;
+        }
+
+        ::selection {
+            background:rgb(255, 252, 47);
+            color:rgb(0, 0, 0);
+        }
+
+        :focus {
+            background-color: rgb(241, 241, 241);
+        }
+
+        #checkbox {
+            height: 100%;
+            width: 100%;
+            cursor:pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sidebarToggle {
+            display: none;
+        }
+
+        #sidebarToggle:checked + label{
+            background-color: rgb(255, 252, 47);
+        }
+
+        #sidebar {
+            display: none;
+        }
+
+        #sidebarToggle:checked ~ #sidebar {
+            display: block;
+            position: fixed;
+            height: 100%;
+            width: 1000px;
+            background-color: grey;
+        }
+
+        
+
+       
+
+        
+    </style>
+</head>
+
+<body>
+    <nav id="header">
+        <div class="headeritem" id="">
+            <input type="checkbox" id="sidebarToggle" name="sidebarToggle">
+            <label for="sidebarToggle" id="checkbox"><img src="assets/hamburger.svg"></label>
+
+            <nav id="sidebar">
+                <ul>
+                    <li><p>hello</p></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="headeritem">
+            <p>Lore DB</p>
+        </div>
+    </nav>
+    <div class="contentWrapper">
+        <div class="content">
+            <p style="font-size: 20px; text-decoration: underline;">Create New</p>
+            <div class="title">
+                <div>
+                    <label for='titleinput'>Title</label>
+                    <input type='text' id='titleinput' name='titleinput' placeholder="Title..."> 
+                </div>
+                <div>
+                    <label for='genreselect'>Genre</label>
+                    <select name='genreselect' id='genreselect'>
+                        <option value="" disabled selected hidden>Choose...</option>
+                        <option value="horror">Horror</option>
+                        <option value="magical_realism">Magical Realism</option>
+                    </select>
+                </div>
+                <div>
+                    <label for='taginput'>Tags</label>
+                    <input type='text' id='taginput' name='taginput' placeholder="Tags..."> 
+                </div>
+            </div>
+            <div class="createBtn">
+                <input type="button" value="Create">
+            </div>
+            <div class="theme">
+                <div>
+                    <label for='themeselect'>Theme</label>
+                    <select name='themeselect' id='themeselect'>
+                        <option value="" disabled selected hidden>Choose...</option>
+                        <option value="horror">Horror</option>
+                        <option value="magical_realism">Magical Realism</option>
+                    </select>
+                    <canvas id="themeImage"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
