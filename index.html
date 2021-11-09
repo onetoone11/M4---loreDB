@@ -5,9 +5,280 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #707070;
+
+            font-family: "Schoolbook";
+            overflow: hidden;
+            font-size: 1.2rem;
+        }
+
+        @font-face {
+            font-family: "Schoolbook";
+            src: url("fonts/texgyreschola-regular.otf"),
+                url("fonts/texgyreschola-italic.otf"),
+                url("fonts/texgyreschola-bolditalic.otf"),
+                url("fonts/texgyreschola-bold.otf");
+        }
+
+        body {
+            background-color: hotpink;
+        }
+
+        #app {
+            display: grid;
+            width: 100%;
+            height: 100vh;
+            grid-template-areas: 
+            "header header";
+            grid-template-columns: auto 1fr;
+        }
+
+        #header {
+            grid-area: header;
+            display: grid;
+            width: 100%;
+            height: 40px;
+            background-color: #FFFFFF;
+
+            grid-auto-flow: column;
+            grid-auto-columns: 100px;
+        }
+
+        #sidebar {
+            display: grid;
+            width: 0px;
+            background-color: #FFFFFF;
+            transition: 0.5s;
+
+            grid-auto-flow: row;
+            justify-content: center;
+            grid-auto-rows: 40px;
+            grid-auto-columns: 100%;
+        }
+
+        #main {
+            display: grid;
+            overflow-y: scroll;
+            overflow-x: clip;
+            width: 100%;
+            height: 100%;
+            background-color: #F9F2E4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #main-content {
+            display: flex;
+            height: auto;
+            width: 900px;
+            background-color: #F9F2E4;;
+            flex-direction: column;
+            margin-top: 120px;
+            align-items: center;
+            gap: 30px;
+        }
+
+        #hamburger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        #sidebarToggle {
+            display: none;
+        }
+
+        #sidebarToggle:checked + label {
+            transform: rotate(90deg);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .fill {
+            width: 100%;
+            height: 100%;
+        }
+
+        #title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="button"] {
+            background-color: #FFFFFF;
+            border: none;
+        }
+
+        #sidebar input {
+            border-bottom: 1px solid #707070;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #sidebar input:hover {
+            background-color: rgb(219, 219, 219);
+        }
+
+        h1 {
+            font-size: xx-large;
+        }
+
+        h2{
+            font-size: large;
+        }
+
+        h3 {
+            font-size: small;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            gap: 12px;
+        }
+
+        hr {
+            width: 30%;
+            height: 4px;
+            background-color: #707070;
+        }
+
+        .section-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #FFFFFF;
+            width: 700px;
+            height: 50px;
+            border: 2px solid #707070;
+            border-radius: 6px;
+            padding: 28px 10px;
+        }
+
+        .section-item h2{
+            flex: auto;
+        }
+        
+        .favicon{
+            width: 40px;
+            height: 40px;
+            background-color: fuchsia;
+            justify-self: flex-start;
+        }
+
+        .tags {
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello world!</h1>
+    <div id="app">
+        <nav id="header" class="border">
+            <input type="checkbox" id="sidebarToggle"> 
+            <label id="hamburger" for="sidebarToggle"><img src="assets/hamburger.svg" alt="hamburg"></label>
+            <p id="title" class="fill">Lore DB</p>
+        </nav>
+        <nav id="sidebar" class="border">
+            <input type="button" id="homeBtn" value="home">
+            <input type="button" id="contentBtn" value="content">
+            <input type="button" value="about">
+        </nav>
+        <div id="main">
+            <div id="main-content">
+                <div class="section">
+                    <h1>Worlds</h1>
+                    <hr>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>Star wars</h2>
+                        <div class="tags">
+                            <h3>sci-fi, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>Jojo's Bizare Adventures</h2>
+                        <div class="tags">
+                            <h3>Anime, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>The Bee Movie</h2>
+                        <div class="tags">
+                            <h3>Documentary, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>Christianity</h2>
+                        <div class="tags">
+                            <h3>Anime, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h1>Posts</h1>
+                    <hr>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>Luke Skywalker</h2>
+                        <div class="tags">
+                            <h3>tag 1, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon" style="background-color: #ffffff;"></div>
+                        <h2>Jeff</h2>
+                        <div class="tags">
+                            <h3>tag 1, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon"></div>
+                        <h2>God</h2>
+                        <div class="tags">
+                            <h3>tag 1, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <div class="favicon" style="background-color: #ffffff;"></div>
+                        <h2>Jesus</h2>
+                        <div class="tags">
+                            <h3>tag 1, tag 2, tag 3...</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('change', (event) => 
+        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px'
+    );
+</script>
 </html>
