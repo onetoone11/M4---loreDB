@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #707070;
+
+            font-family: "Schoolbook";
+            overflow: hidden;
+            font-size: 1.2rem;
+        }
+
+        @font-face {
+            font-family: "Schoolbook";
+            src: url("fonts/texgyreschola-regular.otf"),
+                url("fonts/texgyreschola-italic.otf"),
+                url("fonts/texgyreschola-bolditalic.otf"),
+                url("fonts/texgyreschola-bold.otf");
+        }
+
+        body {
+            background-color: hotpink;
+        }
+
+        #app {
+            display: grid;
+            width: 100%;
+            height: 100vh;
+            grid-template-areas: 
+            "header header";
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto 1fr;
+        }
+
+        #header {
+            grid-area: header;
+            display: grid;
+            width: 100%;
+            height: 40px;
+            background-color: #FFFFFF;
+
+            grid-auto-flow: column;
+            grid-auto-columns: 100px;
+        }
+
+        #sidebar {
+            display: grid;
+            width: 0px;
+            background-color: #FFFFFF;
+            transition: 0.5s;
+
+            grid-auto-flow: row;
+            justify-content: center;
+            grid-auto-rows: 40px;
+            grid-auto-columns: 100%;
+        }
+
+        #main {
+            display: grid;
+            overflow-y: scroll;
+            overflow-x: clip;
+            width: 100%;
+            height: 100%;
+            background-color: #F9F2E4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #content {
+            display: grid;
+            height: 500px;
+            width: 900px;
+            background-color: #FFFFFF;
+            border: 1px solid #707070;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin-top: 30px;
+        }
+
+        #hamburger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        #sidebarToggle {
+            display: none;
+        }
+
+        #sidebarToggle:checked + label {
+            transform: rotate(90deg);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .fill {
+            width: 100%;
+            height: 100%;
+        }
+
+        #title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="button"] {
+            background-color: #FFFFFF;
+            border: none;
+        }
+
+        #sidebar input {
+            border-bottom: 1px solid #707070;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #sidebar input:hover {
+            background-color: rgb(219, 219, 219);
+        }
+
+        #createLoreForm {
+            display: grid;
+            grid-auto-rows: 100px;
+            grid-auto-flow: row;
+
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <nav id="header" class="border">
+            <input type="checkbox" id="sidebarToggle"> 
+            <label id="hamburger" for="sidebarToggle"><img src="assets/hamburger.svg" alt="hamburg"></label>
+            <p id="title" class="fill">Lore DB</p>
+        </nav>
+        <nav id="sidebar" class="border">
+            <input type="button" value="home">
+            <input type="button" value="content">
+            <input type="button" value="about">
+        </nav>
+        <div id="main">
+            <div id="content">
+                <form id="createLoreForm">
+                    <label for="titleInput">Title</label>
+                    <input type="text" id="titleInput">
+                    <label for=""></label>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('change', (event) => 
+        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px'
+    );
+</script>
+</html>
