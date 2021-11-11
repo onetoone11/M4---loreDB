@@ -28,6 +28,7 @@
             grid-template-areas: 
             "header header";
             grid-template-columns: auto 1fr;
+            grid-template-rows: auto 1fr;
         }
 
         #header {
@@ -43,7 +44,7 @@
 
         #sidebar {
             display: grid;
-            width: 0px;
+            width: 200px;
             background-color: #FFFFFF;
             transition: 0.5s;
 
@@ -66,12 +67,14 @@
 
         #content {
             display: grid;
-            height: 2000px;
+            height: 1000px;
             width: 900px;
-            background-color: khaki;
+            background-color: #F9F2E4;
+            border: 1px solid #707077;
             word-wrap: break-word;
             overflow-wrap: break-word;
             margin-top: 30px;
+            margin-bottom: 30px;
         }
 
         #hamburger {
@@ -113,6 +116,10 @@
             align-items: center;
         }
 
+        a {
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -126,17 +133,19 @@
             <input type="button" id="homeBtn" value="home">
             <input type="button" id="contentBtn" value="content">
             <input type="button" value="about">
+            <a href="#">Link test</a>
         </nav>
         <div id="main">
             <div id="content">
-
+                <!-- content goes here using @include() -->
             </div>
         </div>
     </div>
 </body>
 <script>
-    document.getElementById('sidebarToggle').addEventListener('change', (event) => 
-        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px'
-    );
+    document.getElementById('sidebarToggle').addEventListener('change', (event) => {
+        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px';
+        // document.getElementById("sidebar").style.display = event.currentTarget.checked ? 'grid' : 'none';
+    });
 </script>
 </html>

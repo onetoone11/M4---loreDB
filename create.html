@@ -4,257 +4,253 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LoreDB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        @font-face {
-            font-family: "Schoolbook";
-            src: url("fonts/texgyreschola-regular.otf"),
-                url("fonts/texgyreschola-italic.otf"),
-                url("fonts/texgyreschola-bolditalic.otf"),
-                url("fonts/texgyreschola-bold.otf");
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            color: #707070;
 
             font-family: "Schoolbook";
             overflow: hidden;
             font-size: 1.3rem;
-            color: #707070;
-            user-select: none;
         }
 
         body {
-            background-color: #F9F2E4;
+            background-color: hotpink;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .fill {
+            width: 100%;
+            height: 100%;
+        }
+
+        #app {
             display: grid;
+            width: 100%;
             height: 100vh;
-            grid-template:
-                'header' 40px 
-                'content' 1fr; 
+            grid-template-areas:
+                "header header";
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto 1fr;
         }
 
         #header {
             grid-area: header;
+            display: grid;
+            width: 100%;
+            height: 40px;
+            background-color: #FFFFFF;
+
+            grid-auto-flow: column;
+            grid-auto-columns: 100px;
+        }
+
+        #sidebar {
+            display: grid;
+            width: 0px;
+            background-color: #FFFFFF;
+            transition: 0.5s;
+
+            grid-auto-flow: row;
+            justify-content: center;
+            grid-auto-rows: 50px;
+            grid-auto-columns: 100%;
+        }
+
+        #sidebar * {
             height: 100%;
             width: 100%;
-            background-color: #FFFFFF;
-            border: 1px solid #707070;
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: rgb(245, 245, 245);
+            text-decoration: none;
+        }
+
+        #main {
+            display: grid;
+            overflow-y: scroll;
+            overflow-x: scroll;
+            width: 100%;
+            height: 100%;
+            background-color: #F9F2E4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #content {
+            display: grid;
+            height: 600px;
+            width: 900px;
+            background-color: #ffffff;
+            border: 1px solid #707077;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            /* grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;*/
+            /* grid-auto-flow: row;  */
+        }
+
+        #createUniverseForm {
             display: grid;
             grid-template:
-            "a b c d ."
-            / 0.3fr 1fr 1fr 1fr 5fr;
-            justify-items: stretch;
-            justify-content: stretch;
-        }
+                "create create create" 50px
+                ". . ." 1fr
+                ". . ." 1fr
+                ". . ." 1fr
+                "submit submit submit" 100px
+                /1fr 1fr 1fr;
 
-        .headeritem {
-            display: flex;
-            border-inline: 1px solid #707070;
+            grid-auto-flow: column;
+
             justify-content: center;
             align-items: center;
+            margin: 10px;
+            gap: 10px;
         }
 
-        .headeritem svg {
-            height: 70%;
-            width: auto;
-        }
-
-        .contentWrapper {
-            display: grid;
-            grid-area: content;
-            background-color: #F9F2E4;;
-            grid-template: 
-            ". . ." 0.2fr
-            ". contents ." 2fr
-            ". . ." 0.2fr
-            / 0.1fr 1fr 0.1fr;
-        }
-
-        .content {
-            padding: 10px;
-            grid-area: contents;
-            display: grid;
-            grid-template: 
-            "createnew createnew createnew createnew" 0.3fr
-            "title theme . ." 2fr
-            ". create create ." 1fr
-            / 1fr 1fr 1fr 1fr;
-            background-color: rgb(255, 255, 255);
-            border: 1px solid black;
-            column-gap: 10px;
-        }
-
-        .content > div {
-            display: flex;
+        #createUniverseForm label * {
+            width: 100%;
             height: 100%;
+            align-self: center;
+            font-size: 1rem;
+        }
+
+        #createUniverseForm canvas {
             width: 100%;
-        }
-
-        .content * {
-            font-size: 16px;
-        }
-
-        .title {
-            
-            grid-area: title;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: left;
-            /* background-color: darkturquoise; */
-        }
-
-        .theme {
-            grid-area: theme;
-            flex-direction: column;
-            justify-content:space-evenly;
-            align-items: left;
-            /* background-color: rgb(206, 36, 36); */
-        }
-
-        .createBtn {
-            grid-area: create;
-
-            justify-content: center;
-            align-items: center;
-
-            /* background-color: darkviolet; */
-        }
-
-        select, input:not([type='button']) {
-            width: 100%;
-            height: 40px;
-            border: 1px solid #707070;
-        }
-
-        input[type='button'] {
-            border: 1px solid #707070;
-            background-color: white;
-            height: 40px;
-            width: 90px;
-        }
-
-        input[type='button']:hover {
-            background-color: rgb(226, 226, 226);
-            cursor:pointer;
-        }
-
-        input[type="button"]:active {
-            background-color: rgb(211, 211, 211);
-        }
-
-        label {
-            font-size: 20px !important;
-        }
-
-        #themeImage {
-            height: 60%;
-            width: 100%;
-            border: 1px solid #707070;
-            margin-top: 10px;
-        }
-
-        ::selection {
-            background:rgb(255, 252, 47);
-            color:rgb(0, 0, 0);
-        }
-
-        :focus {
-            background-color: rgb(241, 241, 241);
-        }
-
-        #checkbox {
             height: 100%;
-            width: 100%;
-            cursor:pointer;
+        }
+
+        #hamburger {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 40px;
+            transition: 0.3s;
+
+            cursor: pointer;
         }
 
         #sidebarToggle {
             display: none;
         }
 
-        #sidebarToggle:checked + label{
-            background-color: rgb(255, 252, 47);
+        #sidebarToggle:checked+label {
+            transform: rotate(90deg);
         }
 
-        #sidebar {
-            display: none;
+        #title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #sidebarToggle:checked ~ #sidebar {
-            display: block;
-            position: fixed;
-            height: 100%;
-            width: 1000px;
-            background-color: grey;
+        a {
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
+        #themeDisplay {
+            border: 1px solid black;
+        }
+
+        #createTitle {
+            grid-area: create;
+            text-decoration: underline;
+        }
+
+        #submitUniverse {
+            grid-area: submit;
+            width: 100px;
+            justify-self: center;
+            align-self: flex-end;
+        }
         
 
-       
-
-        
     </style>
 </head>
 
 <body>
-    <nav id="header">
-        <div class="headeritem" id="">
-            <input type="checkbox" id="sidebarToggle" name="sidebarToggle">
-            <label for="sidebarToggle" id="checkbox"><img src="assets/hamburger.svg"></label>
+    <div id="app">
+        <nav id="header" class="border">
+            <input type="checkbox" id="sidebarToggle">
+            <label id="hamburger" for="sidebarToggle"><img src="assets/hamburger.svg" alt="hamburg"></label>
+            <p id="title" class="fill">Lore DB</p>
+        </nav>
+        <nav id="sidebar" class="border"></a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Content</a>
+            <a href="#">Link test</a>
+            <!-- here goes @include() -->
+        </nav>
+        <div id="main">
+            <div id="content">
+                <!-- also @include() -->
+                <form id="createUniverseForm">
+                    <p id="createTitle">Create New</p>
+                    <label>
+                        Title<br>
+                        <input type='text' id='titleinput' name='titleinput' placeholder="Title...">
+                    </label>
 
-            <nav id="sidebar">
-                <ul>
-                    <li><p>hello</p></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="headeritem">
-            <p>Lore DB</p>
-        </div>
-    </nav>
-    <div class="contentWrapper">
-        <div class="content">
-            <p style="font-size: 20px; text-decoration: underline;">Create New</p>
-            <div class="title">
-                <div>
-                    <label for='titleinput'>Title</label>
-                    <input type='text' id='titleinput' name='titleinput' placeholder="Title..."> 
-                </div>
-                <div>
-                    <label for='genreselect'>Genre</label>
-                    <select name='genreselect' id='genreselect'>
-                        <option value="" disabled selected hidden>Choose...</option>
-                        <option value="horror">Horror</option>
-                        <option value="magical_realism">Magical Realism</option>
-                    </select>
-                </div>
-                <div>
-                    <label for='taginput'>Tags</label>
-                    <input type='text' id='taginput' name='taginput' placeholder="Tags..."> 
-                </div>
-            </div>
-            <div class="createBtn">
-                <input type="button" value="Create">
-            </div>
-            <div class="theme">
-                <div>
-                    <label for='themeselect'>Theme</label>
-                    <select name='themeselect' id='themeselect'>
-                        <option value="" disabled selected hidden>Choose...</option>
-                        <option value="horror">Horror</option>
-                        <option value="magical_realism">Magical Realism</option>
-                    </select>
-                    <canvas id="themeImage"></canvas>
-                </div>
+
+                    <label>
+                        Genre<br>
+                        <select name='genreselect' id='genreselect'>
+                            <option value="" disabled selected hidden>Choose...</option>
+                            <option value="horror">Horror</option>
+                            <option value="magical_realism">Magical Realism</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Tags<br>
+                        <select id='tagselect'>
+                            <option value="" disabled selected hidden>Choose...</option>
+                            <option value="">Sci-fi</option>
+                        </select>
+                    </label>
+
+
+                    <label>
+                        Theme<br>
+                        <select name='themeselect' id='themeselect'>
+                            <option value="" disabled selected hidden>Choose...</option>
+                            <option value="horror">Horror</option>
+                            <option value="magical_realism">Magical Realism</option>
+                        </select>
+                    </label>
+
+                    <canvas id="themeDisplay"></canvas>
+
+                    <input id="submitUniverse" type="submit" value="Create">
+                </form>
             </div>
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('change', (event) => {
+        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px';
+        // document.getElementById("sidebar").style.display = event.currentTarget.checked ? 'grid' : 'none';
+    });
+</script>
 
 </html>
