@@ -4,7 +4,7 @@
 
     <div id="maincuni">
         <div id="content">
-            <form id="createUniverseForm">
+            <form id="createUniverseForm" action="" method="POST", enctype="multipart/form-data">
                 <p id="createTitle">{{$title}}</p>
                 <label>
                     Title<br>
@@ -40,6 +40,11 @@
                 </label>
 
                 <canvas id="themeDisplay"></canvas>
+
+                <label>
+                    Icon<br>
+                    <input type="file" >
+                </label>
 
                 <input id="submitUniverse" type="submit" value="Create">
             </form>
