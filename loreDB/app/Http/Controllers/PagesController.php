@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('pages.index');
+        $title = 'Worlds';
+        return view('pages.index')->with('title', $title);
+    }
+
+    public function createuni(){
+        $title = 'Create New World';
+        return view('pages.createuni')->with('title', $title);
     }
 }

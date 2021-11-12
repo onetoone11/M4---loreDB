@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #707070;
+
+    font-family: "Schoolbook";
+    overflow: hidden;
+    font-size: 1.3rem;
+}
+
+@font-face {
+    font-family: "Schoolbook";
+    src: url("../fonts/texgyreschola-regular.otf"),
+        url("../fonts/texgyreschola-italic.otf"),
+        url("../fonts/texgyreschola-bolditalic.otf"),
+        url("../fonts/texgyreschola-bold.otf");
+}
+
+body {
+    background-color: hotpink;
+}
+
+#app {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas:
+        "header header";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+#header {
+    grid-area: header;
+    display: grid;
+    width: 100%;
+    height: 40px;
+    background-color: #FFFFFF;
+
+    grid-auto-flow: column;
+    grid-auto-columns: 100px;
+}
+
+#hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+#sidebar {
+    display: grid;
+    width: 0px;
+    background-color: #FFFFFF;
+    transition: 0.5s;
+
+    grid-auto-flow: row;
+    justify-content: center;
+    grid-auto-rows: 50px;
+    grid-auto-columns: 100%;
+}
+
+#sidebar * {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgb(245, 245, 245);
+    text-decoration: none;
+}
+
+#sidebar a {
+    border-bottom: 1px solid #707070;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#sidebar input:hover,
+#sidebar a:hover {
+    background-color: rgb(219, 219, 219);
+}
+
+#sidebarToggle {
+    display: none;
+}
+
+#sidebarToggle:checked + label {
+    transform: rotate(90deg);
+}
+
+#main {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-color: #F9F2E4;
+    justify-content: center;
+}
+
+#main-content {
+    display: flex;
+    height: auto;
+    width: 900px;
+    background-color: #F9F2E4;;
+    flex-direction: column;
+}
+
+#maincuni {
+    display: grid;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    width: 100%;
+    height: 100%;
+    background-color: #F9F2E4;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    background-color: #FFFFFF;
+    border: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1%;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+input[type="button"] {
+    background-color: #FFFFFF;
+    border: none;
+    width: 100%;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2{
+    font-size: large;
+}
+
+h3 {
+    font-size: small;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 12px;
+    padding-top: 50px;
+    height: 100%;
+}
+
+hr {
+    width: 30%;
+    height: 4px;
+    background-color: #707070;
+}
+
+.section-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #FFFFFF;
+    width: 700px;
+    height: 50px;
+    border: 2px solid #707070;
+    border-radius: 6px;
+    padding: 28px 10px;
+}
+
+.section-item h2{
+    flex: auto;
+}
+
+.favicon{
+    width: 40px;
+    height: 40px;
+    background-color: fuchsia;
+    justify-self: flex-start;
+}
+
+.tags {
+    width: 200px;
+}
+
+#content {
+    display: grid;
+    height: 600px;
+    width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #707077;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#createUniverseForm {
+    display: grid;
+    grid-template:
+        "create create create" 50px
+        ". . ." 1fr
+        ". . ." 1fr
+        ". . ." 1fr
+        "submit submit submit" 100px
+        /1fr 1fr 1fr;
+
+    grid-auto-flow: column;
+
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+#createUniverseForm label * {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    font-size: 1rem;
+}
+
+#createUniverseForm canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#themeDisplay {
+    border: 1px solid black;
+}
+
+#createTitle {
+    grid-area: create;
+    text-decoration: underline;
+}
+
+#submitUniverse {
+    grid-area: submit;
+    width: 100px;
+    justify-self: center;
+    align-self: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
