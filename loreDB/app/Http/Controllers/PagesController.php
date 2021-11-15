@@ -15,4 +15,9 @@ class PagesController extends Controller
         $title = 'Create New World';
         return view('pages.createuni')->with('title', $title);
     }
+
+    public function about() {
+        $title = 'About us';
+        return view('pages.about')->with('title', $title);
+    }
 }
