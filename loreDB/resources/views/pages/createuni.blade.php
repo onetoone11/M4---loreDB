@@ -43,7 +43,7 @@
 
                 <label>
                     Icon<br>
-                    <input type="file" >
+                    <input type="file" id="iconinput">
                 </label>
 
                 <input id="submitUniverse" type="submit" value="Create">

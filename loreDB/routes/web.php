@@ -20,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\PagesController@index');
 Route::get('/createuni', 'App\Http\Controllers\PagesController@createuni');
 Route::get('/about', 'App\Http\Controllers\PagesController@about');
+
+Route::resource('stories','App\Http\Controllers\StoriesController');
+Route::resource('pages','App\Http\Controllers\UniversesController');
