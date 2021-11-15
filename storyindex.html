@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #707070;
+
+            font-family: "Schoolbook";
+            font-size: 1.3rem;
+        }
+
+        body {
+            background-color: hotpink;
+            height:100vh;
+            width:100vw;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .fill {
+            width: 100%;
+            height: 100%;
+        }
+
+        #app {
+            display: grid;
+            width: 100%;
+            height: 100vh;
+            grid-template-areas:
+                "header header";
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto 1fr;
+        }
+
+        #header {
+            grid-area: header;
+            display: grid;
+            width: 100%;
+            height: 40px;
+            background-color: #FFFFFF;
+
+            grid-auto-flow: column;
+            grid-auto-columns: 100px;
+        }
+
+        #sidebar {
+            display: grid;
+            width: 0px;
+            background-color: #FFFFFF;
+            transition: 0.5s;
+
+            grid-auto-flow: row;
+            justify-content: center;
+            align-items: center;
+            grid-auto-rows: 50px;
+            grid-auto-columns: 100%;
+        }
+
+        #sidebar * {
+            height: 100%;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: rgb(245, 245, 245);
+            text-decoration: none;
+        }
+
+        #main {
+            display: grid;
+            overflow-y: auto;
+            /* overflow-x: auto; */
+            width:auto;
+            height:100%;
+            background-color: #F9F2E4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #content {
+            display: grid;
+            height: auto;
+            width: 900px;
+            /* background-color: #ffffff; */
+            /* border: 1px solid #707077; */
+            /* word-wrap: break-word;
+            overflow-wrap: break-word; */
+            margin-top: 30px;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        #hamburger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        #sidebarToggle {
+            display: none;
+        }
+
+        #sidebarToggle:checked+label {
+            transform: rotate(90deg);
+        }
+        
+        a {
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: 0.2s;
+        }
+
+        #sidebar a:hover {
+            background-color:rgb(224, 224, 224)
+        }
+
+        /* #storylist {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            gap: 12px;
+            padding-top: 50px;
+            height: 100%;
+        }
+
+        #storylist > * {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #FFFFFF;
+            width: 700px;
+            height: 50px;
+            border: 2px solid #707070;
+            border-radius: 6px;
+            padding: 28px 10px;
+        }
+
+        .section-item h2{
+            flex: auto;
+        }
+
+        .favicon{
+            width: 40px;
+            height: 40px;
+            background-color: fuchsia;
+            justify-self: flex-start;
+        } */
+
+        .card {
+            display: grid;
+            width: 100%;
+            height: 0;
+            background-color: rgb(230, 215, 86);
+            border: 1px solid black;
+            /* aspect-ratio: 1; */
+            padding-bottom: 100%;
+            transition: 0.1s;
+            cursor: pointer;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card p {
+            text-align: center;
+            font-size: smaller;
+        }
+
+        #storylist > *:hover {
+            transform: scale(1.01);
+            filter: brightness(90%);
+        }
+
+        #storylist {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr;
+            grid-auto-flow: row;
+            width: 100%;
+            height: auto;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #filterForm {
+            background-color: rosybrown;
+            height: 100px;
+            width: 100%;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav id="header" class="border">
+            <input type="checkbox" id="sidebarToggle">
+            <label id="hamburger" for="sidebarToggle"><img src="assets/hamburger.svg" alt="hamburg"></label>
+            <p id="title" class="fill">Lore DB</p>
+        </nav>
+        <nav id="sidebar" class="border"></a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Content</a>
+            <a href="#">Link test</a>
+        </nav>
+        <div id="main">
+            <div id="content">
+                <div class="center">
+                    <h1>Stories</h1>
+                </div>
+                <hr>
+                <div id="filterForm">
+                    a
+                </div>
+                <div id="storylist">
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                    <div class="card">
+                        <p>Title</p>
+                        <p>Created at: 2021</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('change', (event) => {
+        document.getElementById("sidebar").style.width = event.currentTarget.checked ? '200px' : '0px';
+    });
+</script>
+
+</html>
