@@ -15,8 +15,8 @@ class CreateStoryTypesTable extends Migration
     {
         Schema::create('story_types', function (Blueprint $table) {
             $table->id();
-            $table->int('story_id');
-            $table->int('type_id');
+            $table->integer('story_id');
+            $table->integer('type_id');
         });
     }
 

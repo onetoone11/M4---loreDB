@@ -15,8 +15,8 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->int('story1_id');
-            $table->int('story2_id');
+            $table->integer('story1_id');
+            $table->integer('story2_id');
         });
     }
 

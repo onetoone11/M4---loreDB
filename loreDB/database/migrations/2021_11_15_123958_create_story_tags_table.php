@@ -15,8 +15,8 @@ class CreateStoryTagsTable extends Migration
     {
         Schema::create('story_tags', function (Blueprint $table) {
             $table->id();
-            $table->int('story_id');
-            $table->int('tag_id');
+            $table->integer('story_id');
+            $table->integer('tag_id');
         });
     }
 

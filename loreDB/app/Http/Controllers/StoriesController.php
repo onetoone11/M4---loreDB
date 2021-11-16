@@ -13,7 +13,8 @@ class StoriesController extends Controller
      */
     public function index()
     {
-        //
+        $story = Story::orderBy('created_at', 'desc')->paginate(10);
+        return view('stories/')->with('story', $story);
     }
 
     /**
@@ -24,7 +25,7 @@ class StoriesController extends Controller
     public function create()
     {
         $title = 'Create New Story';
-        return view('pages.createuni')->with('title', $title);
+        return view('stories.createstory')->with('title', $title);
     }
 
     /**

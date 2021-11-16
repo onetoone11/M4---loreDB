@@ -15,8 +15,8 @@ class CreateStoryTopicsTable extends Migration
     {
         Schema::create('story_topics', function (Blueprint $table) {
             $table->id();
-            $table->int('story_id');
-            $table->int('topic_id');
+            $table->integer('story_id');
+            $table->integer('topic_id');
         });
     }
 

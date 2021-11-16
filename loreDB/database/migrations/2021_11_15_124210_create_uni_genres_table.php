@@ -15,8 +15,8 @@ class CreateUniGenresTable extends Migration
     {
         Schema::create('uni_genres', function (Blueprint $table) {
             $table->id();
-            $table->int('uni_id');
-            $table->int('genre_id');
+            $table->integer('uni_id');
+            $table->integer('genre_id');
         });
     }
 

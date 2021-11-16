@@ -15,8 +15,8 @@ class CreateUniTagsTable extends Migration
     {
         Schema::create('uni_tags', function (Blueprint $table) {
             $table->id();
-            $table->int('uni_id');
-            $table->int('tag_id');
+            $table->integer('uni_id');
+            $table->integer('tag_id');
         });
     }
 
