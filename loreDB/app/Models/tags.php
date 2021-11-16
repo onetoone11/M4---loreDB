@@ -12,4 +12,7 @@ class tags extends Model
     public function story_tags(){
         return $this->hasMany('App\Models\story_tags');
     }
+    public function uni_tags(){
+        return $this->hasMany('App\Models\uni_tags');
+    }
 }

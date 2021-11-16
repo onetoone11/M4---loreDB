@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class uni_genre extends Model
 {
     use HasFactory;
+
+    public function genre(){
+        return $this->belongsTo('App\Models\Universe');
+    }
 }

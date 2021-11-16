@@ -12,4 +12,8 @@ class Story extends Model
     public function story_tags(){
         return $this->hasMany('App\Models\story_tags');
     }
+
+    public function story_topic(){
+        return $this->hasMany('App\Models\topic');
+    }
 }

@@ -12,7 +12,7 @@ class PagesController extends Controller
     }
 
     public function createuni(){
-        $title = 'Create New World';
+        $title = 'Create New Universe';
         return view('pages.createuni')->with('title', $title);
     }
 
