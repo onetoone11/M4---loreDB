@@ -9,7 +9,15 @@ class Universe extends Model
 {
     use HasFactory;
 
-    public function story_tags(){
+    public function uni_tags(){
         return $this->hasMany('App\Models\uni_tags');
+    }
+
+    public function uni_genres(){
+        return $this->hasMany('App\Models\uni_genre');
+    }
+
+    public function stories(){
+        return $this->hasMany('App\Models\story');
     }
 }

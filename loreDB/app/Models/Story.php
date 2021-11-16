@@ -16,4 +16,8 @@ class Story extends Model
     public function story_topic(){
         return $this->hasMany('App\Models\topic');
     }
+
+    public function universe(){
+        return $this->belongsTo('App\Models\Universe');
+    }
 }
