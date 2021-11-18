@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Universe extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     public function uni_tags(){
         return $this->hasMany('App\Models\uni_tags');

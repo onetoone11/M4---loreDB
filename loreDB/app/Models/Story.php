@@ -14,7 +14,7 @@ class Story extends Model
     }
 
     public function story_topic(){
-        return $this->hasMany('App\Models\topic');
+        return $this->hasMany('App\Models\story_topic');
     }
 
     public function universe(){

@@ -9,7 +9,11 @@ class uni_genre extends Model
 {
     use HasFactory;
 
-    public function genre(){
+    public function uni(){
         return $this->belongsTo('App\Models\Universe');
+    }
+
+    public function genre(){
+        return $this->belongsTo('App\Models\genre');
     }
 }
