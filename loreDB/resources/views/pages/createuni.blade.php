@@ -38,6 +38,9 @@
                 </label>
 
                 <input id="submitUniverse" type="submit" value="Create">
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'texteditor' );
+                </script>
             </form>
         </div>
     </div>
