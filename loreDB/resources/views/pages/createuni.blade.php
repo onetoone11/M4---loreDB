@@ -39,7 +39,7 @@
                     </select>
                 </label>
 
-                <canvas id="themeDisplay"></canvas>
+                <!--<textarea name="texteditor" class="ckeditor"></textarea>-->
 
                 <label>
                     Icon<br>
@@ -47,6 +47,9 @@
                 </label>
 
                 <input id="submitUniverse" type="submit" value="Create">
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'texteditor' );
+                </script>
             </form>
         </div>
     </div>

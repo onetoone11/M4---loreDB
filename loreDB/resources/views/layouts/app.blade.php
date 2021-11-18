@@ -23,5 +23,6 @@
         });
     </script>
     <script src="{{ asset('js/code.js') }}"></script>
+    <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
 </body>
 </html>
