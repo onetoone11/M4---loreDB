@@ -10,7 +10,7 @@
 
             <hr>
 
-            <div class="section-item">
+            <div class="section-item hover">
                 <div class="favicon"></div>
                 <h2>Star wars</h2>
                 <div class="tags">
