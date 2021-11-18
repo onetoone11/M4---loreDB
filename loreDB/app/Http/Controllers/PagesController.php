@@ -3,17 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Universe;
+use DB;
 
 class PagesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
-        $title = 'Worlds';
-        return view('pages.index')->with('title', $title);
+        $uni = Universe::all();
+        return view('pages.index')->with('uni', $uni);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function createuni(){
-        $title = 'Create New Universe';
-        return view('pages.createuni')->with('title', $title);
+        $genres = DB::table('genres')->get();
+        $tags = DB::table('tags')->get();
+        return view('pages.createuni')->with('genres', $genres)->with('tags', $tags);
     }
 
     public function about() {

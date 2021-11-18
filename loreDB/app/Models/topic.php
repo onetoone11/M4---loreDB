@@ -10,6 +10,6 @@ class topic extends Model
     use HasFactory;
 
     public function story_topic(){
-        return $this->hasMany('App\Models\Story');
+        return $this->hasMany('App\Models\story_topic');
     }
 }

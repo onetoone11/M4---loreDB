@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\Storage;
+use App\Models\Universe;
+use DB;
 
 class UniversesController extends Controller
 {
@@ -13,7 +16,8 @@ class UniversesController extends Controller
      */
     public function index()
     {
-        //
+        $uni = Universe::orderBy('created_at', 'desc')->paginate(10);
+        return view('pages.index')->with('uni', $uni);
     }
 
     /**
@@ -23,8 +27,7 @@ class UniversesController extends Controller
      */
     public function create()
     {
-        $title = 'Create New World';
-        return view('pages.createuni')->with('title', $title);
+        return view('pages.createuni');
     }
 
     /**
@@ -60,12 +63,20 @@ class UniversesController extends Controller
         }
 
         // Create Post
-        $post = new Post;
-        $post->name = $request->input('titleinput');
-        $post->theme = $request->input('themeselect');
-        $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
-        $post->save();
+        $uni = new Universe;
+        $uni->name = $request->input('titleinput');
+        $uni->cover_image = $fileNameToStore;
+        $uni->save();
+
+        $genres = new uni_genre;
+        $genres->uni_id = $uni->id;
+        $genres->genre_id =$data['genreselect'];
+        $genres->save();
+
+        $tags = new uni_tags;
+        $tags->uni_id = $uni->id;
+        $tags->tag_id =$data['tagselect'];
+        $tags->save();
 
         return redirect('/posts')->with('success', 'Uni Created');
     }
