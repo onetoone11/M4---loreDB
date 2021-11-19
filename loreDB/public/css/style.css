@@ -253,15 +253,12 @@ hr {
 
     grid-auto-flow: column;
 
-    justify-content: center;
-    align-items: center;
     margin: 10px;
     gap: 10px;
 }
 
 #createUniverseForm label * {
     width: 100%;
-    height: 100%;
     align-self: center;
     font-size: 1rem;
 }
@@ -285,4 +282,24 @@ hr {
     width: 100px;
     justify-self: center;
     align-self: flex-end;
+}
+
+.alert-danger {
+    color: #761b18;
+    background-color: #f9d6d5;
+    border-color: #f7c6c5;
+}
+
+.alert-success {
+    color: #1d643b;
+    background-color: #d7f3e3;
+    border-color: #c7eed8;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }

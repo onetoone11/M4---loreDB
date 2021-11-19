@@ -4,7 +4,7 @@
 
     <div id="maincuni">
         <div id="content">
-            <form id="createUniverseForm" action="" method="POST", enctype="multipart/form-data">
+            <form id="createUniverseForm" action="App\Http\Controllers\PagesController@store" method="POST", enctype="multipart/form-data">
                 <p id="createTitle">Create New Universe</p>
                 <label>
                     Title<br>
@@ -32,10 +32,10 @@
                     </select>
                 </label>
 
-                <label>
+                {{-- <label>
                     Icon<br>
                     <input type="file" id="iconinput">
-                </label>
+                </label> --}}
 
                 <input id="submitUniverse" type="submit" value="Create">
                 <script type="text/javascript">
