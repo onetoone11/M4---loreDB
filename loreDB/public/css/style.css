@@ -303,3 +303,12 @@ hr {
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+.hover {
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.hover:hover {
+    transform: scale(1.1);
+    filter: brightness(85%);
+}

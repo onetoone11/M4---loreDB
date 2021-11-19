@@ -11,7 +11,7 @@
             <hr>
             @if (count($uni) > 0)
             @foreach ($uni as $universe)
-                <div class="section-item">
+                <div class="section-item hover">
                     <h2>{{$universe->name}}</h2>
                     <div class="tags">
                         <h3>sci-fi, genre 2, genre 3...</h3>
