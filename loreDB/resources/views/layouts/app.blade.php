@@ -24,5 +24,8 @@
     </script>
     <script src="{{ asset('js/code.js') }}"></script>
     <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace( 'texteditor' );
+    </script>
 </body>
 </html>
