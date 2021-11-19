@@ -263,18 +263,22 @@ hr {
     font-size: 1rem;
 }
 
-#createUniverseForm canvas {
-    width: 100%;
-    height: 100%;
-}
-
-#themeDisplay {
-    border: 1px solid black;
-}
-
 #createTitle {
     grid-area: create;
     text-decoration: underline;
+}
+
+input[type="checkbox"] {
+    width: 2% !important;
+    overflow: auto;
+    display: block;
+}
+
+label p {
+    display: inline;
+    padding-left: 0.1%;
+    width: 7em;
+    text-align: right;
 }
 
 #submitUniverse {

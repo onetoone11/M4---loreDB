@@ -25,6 +25,9 @@ class PagesController extends Controller
     public function index(){
         $uni = Universe::all();
         return view('pages.index')->with('uni', $uni);
+
+        // $uni = DB::select('SELECT * FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id');
+        // return view('pages.index')->with('uni', $uni);
     }
 
     /**
@@ -52,11 +55,10 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        return 'return';
         $this->validate($request, [
             'titleinput' => 'required',
-            // 'genreselect' => 'required',
-            // 'tagselect' => 'required'
+            'genreselect' => 'required',
+            'tagselect' => 'required'
         ]);
 
         // Create Post
@@ -64,15 +66,17 @@ class PagesController extends Controller
         $uni->name = $request->input('titleinput');
         $uni->save();
 
-        // $genres = new uni_genre;
-        // $genres->uni_id = $uni->id;
-        // $genres->genre_id =$data['genreselect'];
-        // $genres->save();
+        $genres = new uni_genre;
+        $genres->uni_id = $uni->id;
+        $genres->genre_id = $request->input('genreselect');
+        $genres->timestamps = false;
+        $genres->save();
 
-        // $tags = new uni_tags;
-        // $tags->uni_id = $uni->id;
-        // $tags->tag_id =$data['tagselect'];
-        // $tags->save();
+        $tags = new uni_tags;
+        $tags->uni_id = $uni->id;
+        $tags->tag_id = $request->input('tagselect');
+        $tags->timestamps = false;
+        $tags->save();
 
         return redirect('/pages');
     }

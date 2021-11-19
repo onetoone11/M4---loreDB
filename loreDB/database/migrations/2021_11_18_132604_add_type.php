@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use DB;
 
 class AddType extends Migration
 {
@@ -13,7 +14,7 @@ class AddType extends Migration
      */
     public function up()
     {
-        Schema::create('type', function(BLueprint $table){
+        Schema::create('type', function(Blueprint $table){
             $table->id();
             $table->string('name','100');
         });
