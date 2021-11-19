@@ -13,10 +13,10 @@ class AddType extends Migration
      */
     public function up()
     {
-        // Schema::create('type', function(BLueprint $table){
-        //     $table->id();
-        //     $table->string('name','100');
-        // });
+        Schema::create('type', function(BLueprint $table){
+            $table->id();
+            $table->string('name','100');
+        });
         
         DB::table('type')->insert(
             [['name'=>'Fact-based'],

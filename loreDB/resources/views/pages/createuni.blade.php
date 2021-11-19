@@ -4,7 +4,7 @@
 
     <div id="maincuni">
         <div id="content">
-            <form id="createUniverseForm" action="App\Http\Controllers\PagesController@store" method="POST", enctype="multipart/form-data">
+            <form id="createUniverseForm" action="/pages" method="POST", enctype="multipart/form-data">
                 <p id="createTitle">Create New Universe</p>
                 <label>
                     Title<br>

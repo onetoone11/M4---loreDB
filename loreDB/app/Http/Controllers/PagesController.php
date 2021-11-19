@@ -52,6 +52,7 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
+        return 'return';
         $this->validate($request, [
             'titleinput' => 'required',
             // 'genreselect' => 'required',
