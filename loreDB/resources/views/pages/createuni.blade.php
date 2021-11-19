@@ -29,18 +29,6 @@
                     </select>
                 </label>
 
-
-                <label>
-                    Theme<br>
-                    <select name='themeselect' id='themeselect'>
-                        <option value="" disabled selected hidden>Choose...</option>
-                        <option value="horror">Horror</option>
-                        <option value="magical_realism">Magical Realism</option>
-                    </select>
-                </label>
-
-                <!--<textarea name="texteditor" class="ckeditor"></textarea>-->
-
                 <label>
                     Icon<br>
                     <input type="file" id="iconinput">
