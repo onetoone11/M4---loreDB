@@ -40,45 +40,26 @@ class UniversesController extends Controller
     {
         $this->validate($request, [
             'titleinput' => 'required',
-            'genreselect' => 'required',
-            'tagselect' => 'required',
-            'themeselect' => 'required',
-            'iconinput' => 'image|nullable|max:1999'
+            // 'genreselect' => 'required',
+            // 'tagselect' => 'required'
         ]);
-
-        // Handle File Upload
-        if($request->hasFile('iconinput')) {
-            // Get filename with the extension
-            $filenameWithExt = $request->file('iconinput')->getClientOriginalName();
-            // Get just filename 
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('iconinput')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename.''.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('iconinput')->storeAs('public/iconimages', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
 
         // Create Post
         $uni = new Universe;
         $uni->name = $request->input('titleinput');
-        $uni->cover_image = $fileNameToStore;
         $uni->save();
 
-        $genres = new uni_genre;
-        $genres->uni_id = $uni->id;
-        $genres->genre_id =$data['genreselect'];
-        $genres->save();
+        // $genres = new uni_genre;
+        // $genres->uni_id = $uni->id;
+        // $genres->genre_id =$data['genreselect'];
+        // $genres->save();
 
-        $tags = new uni_tags;
-        $tags->uni_id = $uni->id;
-        $tags->tag_id =$data['tagselect'];
-        $tags->save();
+        // $tags = new uni_tags;
+        // $tags->uni_id = $uni->id;
+        // $tags->tag_id =$data['tagselect'];
+        // $tags->save();
 
-        return redirect('/posts')->with('success', 'Uni Created');
+        return redirect('pages.index')->with('success', 'Uni Created');
     }
 
     /**

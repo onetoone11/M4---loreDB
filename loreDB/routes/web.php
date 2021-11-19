@@ -23,4 +23,4 @@ Route::get('/about', 'App\Http\Controllers\PagesController@about');
 Route::get('/story', 'App\Http\Controllers\PagesController@story');
 
 Route::resource('stories','App\Http\Controllers\StoriesController');
-Route::resource('pages','App\Http\Controllers\UniversesController');
+Route::resource('pages','App\Http\Controllers\PagesController');
