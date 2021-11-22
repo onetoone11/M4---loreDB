@@ -15,21 +15,22 @@
                 {{-- <input type="checkbox"> --}}
 
 
-                <label>
+                {{-- <label>
                     Genre<br>
-                    <select name='genreselect' id='genreselect'>
+                    <select multiple name='genreselect' id='genreselect'>
                         <option value="" disabled selected hidden>Choose...</option>
                         @foreach ($genres as $genre)
-                            <option value="{{$genre->id}}">{{$genre->name}}</option>
+                            <option value="{{$genre->id}}">{{$genre->name}}<input type="checkbox" id="genre{{$genre->id}}"></option>
                         @endforeach
                     </select>
-                </label>
-
-                {{-- <label>
-                        @foreach($genres as $genre)
-                            <input type="checkbox" name="genreselect[]" value="{{$genre->id}}"><p>{{$genre->name}}</p>
-                        @endforeach
                 </label> --}}
+
+                <label>
+                    @foreach($genres as $genre)
+                        <input id="genre{{$genre->name}}" type="checkbox" name="genreselect[]" value="{{$genre->id}}">
+                        <label for="genre{{$genre->name}}">{{$genre->name}}</label>
+                    @endforeach
+                </label>
 
                 <label>
                     Tags<br>
