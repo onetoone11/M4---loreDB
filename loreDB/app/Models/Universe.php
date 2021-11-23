@@ -17,7 +17,7 @@ class Universe extends Model
         return $this->hasMany('App\Models\uni_genre');
     }
 
-    public function genre(){
+    public function genres(){
         return $this->hasMany('App\Models\genre');
     }
 
