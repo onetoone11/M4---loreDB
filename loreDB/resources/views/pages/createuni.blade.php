@@ -25,14 +25,16 @@
                     </select>
                 </label> --}}
 
-                <label>
+                <div>
+                    Genre<br>
                     @foreach($genres as $genre)
-                        <input id="genre{{$genre->name}}" type="checkbox" name="genreselect[]" value="{{$genre->id}}">
+                        <input id="genre{{$genre->name}}" name="genrebox[]" type="checkbox" value="{{$genre->id}}">
                         <label for="genre{{$genre->name}}">{{$genre->name}}</label>
+                        <br>
                     @endforeach
-                </label>
+                </div>
 
-                <label>
+                {{-- <label>
                     Tags<br>
                     <select id='tagselect' name="tagselect">
                         <option value="" disabled selected hidden>Choose...</option>
@@ -40,12 +42,16 @@
                         <option value="{{$tag->id}}">{{$tag->name}}</option>
                     @endforeach
                     </select>
-                </label>
-
-                {{-- <label>
-                    Icon<br>
-                    <input type="file" id="iconinput">
                 </label> --}}
+
+                <div id="tagBoxes">
+                    Tags<br>
+                    @foreach($tags as $tag)
+                        <input id="tag{{$tag->id}}" name="tagbox[]" type="checkbox" value="{{$tag->id}}">
+                        <label for="tag{{$tag->id}}">{{$tag->name}}</label>
+                        <br>
+                    @endforeach
+                </div>
 
                 <input id="submitUniverse" type="submit" value="Create">
             </form>

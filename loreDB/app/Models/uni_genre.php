@@ -13,7 +13,7 @@ class uni_genre extends Model
         return $this->belongsTo('App\Models\Universe');
     }
 
-    public function genre(){
+    public function genres(){
         return $this->belongsTo('App\Models\genre');
     }
 }

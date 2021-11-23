@@ -263,9 +263,8 @@ hr {
     display: grid;
     grid-template:
         "create create create" 50px
-        ". . ." 1fr
-        ". . ." 1fr
-        ". . ." 1fr
+        ". . ." 150px
+        ". tag ." auto
         "submit submit submit" 50px
         /1fr 1fr 1fr;
 
@@ -275,6 +274,10 @@ hr {
     align-items: center;
     margin: 10px;
     gap: 10px;
+}
+
+#tagBoxes {
+    grid-area: tag;
 }
 
 #createUniverseForm label * {
@@ -291,6 +294,12 @@ hr {
 
 #themeDisplay {
     border: 1px solid black;
+}
+
+input[type="checkbox"] {
+    width: 25% !important;
+    overflow: none;
+    display: inline;
 }
 
 #createTitle {
