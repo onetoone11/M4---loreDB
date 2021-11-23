@@ -24,10 +24,8 @@ class PagesController extends Controller
      */
     public function index(){
         $universes = Universe::all();
-        return view('pages.index')->with('universes', $universes);
-
-        // $uni = DB::select('SELECT * FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id');
-        // return view('pages.index')->with('uni', $uni);
+        $genres = DB::select('SELECT genres.name, universes.id FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id');
+        return view('pages.index')->with('universes', $universes)->with('genres', $genres);  
     }
 
     /**
