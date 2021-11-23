@@ -57,8 +57,8 @@ class PagesController extends Controller
     {
         $this->validate($request, [
             'titleinput' => 'required',
-            'genreselect' => 'required',
-            'tagselect' => 'required'
+            'genrebox' => 'required',
+            'tagbox' => 'required'
         ]);
 
         // Create Post
@@ -66,17 +66,25 @@ class PagesController extends Controller
         $uni->name = $request->input('titleinput');
         $uni->save();
 
-        $genres = new uni_genre;
-        $genres->uni_id = $uni->id;
-        $genres->genre_id = $request->input('genreselect');
-        $genres->timestamps = false;
-        $genres->save();
+        $genreboxes = isset($_POST['genrebox']) ? $_POST['genrebox'] : array();
+        foreach ($genreboxes as $box) {
+            $genres = new uni_genre;
+            $genres->uni_id = $uni->id;
+            $genres->genre_id = $box;
+            $genres->timestamps = false;
+            $genres->save();
+        }
 
-        $tags = new uni_tags;
-        $tags->uni_id = $uni->id;
-        $tags->tag_id = $request->input('tagselect');
-        $tags->timestamps = false;
-        $tags->save();
+        $tagboxes = isset($_POST['tagbox']) ? $_POST['tagbox'] : array();
+        foreach ($tagboxes as $box) {
+            if (isset($box)) {
+                $tags = new uni_tags;
+                $tags->uni_id = $uni->id;
+                $tags->tag_id = $box;
+                $tags->timestamps = false;
+                $tags->save();
+            }
+        }
 
         return redirect('/pages');
     }
