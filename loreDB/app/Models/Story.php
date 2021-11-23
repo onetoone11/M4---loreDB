@@ -9,6 +9,12 @@ class Story extends Model
 {
     use HasFactory;
 
+    protected $table = 'stories';
+
+    public $primaryKey = 'id';
+
+    public $timestamps = true;
+
     public function story_tags(){
         return $this->hasMany('App\Models\story_tags');
     }

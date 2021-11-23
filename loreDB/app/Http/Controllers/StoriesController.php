@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Models\Story;
 
 class StoriesController extends Controller
 {
@@ -13,8 +15,8 @@ class StoriesController extends Controller
      */
     public function index()
     {
-        $story = Story::orderBy('created_at', 'desc')->paginate(10);
-        return view('stories/')->with('story', $story);
+        $stories = Story::orderBy('created_at', 'desc')->paginate(20);
+        return view('stories.index')->with('stories', $stories);
     }
 
     /**
@@ -25,7 +27,7 @@ class StoriesController extends Controller
     public function create()
     {
         $title = 'Create New Story';
-        return view('stories.createstory')->with('title', $title);
+        return view('stories.create')->with('title', $title);
     }
 
     /**
@@ -37,6 +39,12 @@ class StoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $story = new Story;
+        $story->text = $request->input('text');
+        $story->name = $request->input('name');
+        $story->universe_id = 30;
+        $story->save();
+        return redirect('/stories');
     }
 
     /**
@@ -47,7 +55,23 @@ class StoriesController extends Controller
      */
     public function show($id)
     {
-        //
+    //     $name = $request->input('name');
+    //     $universe_id = 10;
+    //     $text = $request->input('text');
+
+    //     DB::table('stories')->insert(
+    //         array(
+    //             'name' => $name,
+    //             'universe_id' => $universe_id,
+    //             'text' => $text
+    //         )
+    //     );
+
+        //INSERT INTO `stories`(`name`, `universe_id`, `text`) VALUES ('test', '50', 'blablabla');
+        // return view('stories.show')->with('name',$name);
+
+        $story = Story::find($id);
+        return view('stories.show')->with('story', $story);
     }
 
     /**
@@ -59,6 +83,8 @@ class StoriesController extends Controller
     public function edit($id)
     {
         //
+        // $story = Story::find($id);
+        // return view
     }
 
     /**
