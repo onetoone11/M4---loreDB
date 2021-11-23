@@ -232,7 +232,6 @@ hr {
 
 #content {
     display: grid;
-    height: 600px;
     width: 900px;
     background-color: #ffffff;
     border: 1px solid #707077;
@@ -248,9 +247,8 @@ hr {
     display: grid;
     grid-template:
         "create create create" 50px
-        ". . ." 1fr
-        ". . ." 1fr
-        ". . ." 1fr
+        ". . ." 150px
+        ". tag ." auto
         "submit submit submit" 50px
         /1fr 1fr 1fr;
 
@@ -258,6 +256,10 @@ hr {
 
     margin: 10px;
     gap: 10px;
+}
+
+#tagBoxes {
+    grid-area: tag;
 }
 
 #createUniverseForm label * {
@@ -272,9 +274,9 @@ hr {
 }
 
 input[type="checkbox"] {
-    width: 2% !important;
-    overflow: auto;
-    display: block;
+    width: 25% !important;
+    overflow: none;
+    display: inline;
 }
 
 label p {
