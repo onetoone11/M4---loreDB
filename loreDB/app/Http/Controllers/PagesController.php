@@ -23,8 +23,8 @@ class PagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $uni = Universe::all();
-        return view('pages.index')->with('uni', $uni);
+        $universes = Universe::all();
+        return view('pages.index')->with('universes', $universes);
 
         // $uni = DB::select('SELECT * FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id');
         // return view('pages.index')->with('uni', $uni);
