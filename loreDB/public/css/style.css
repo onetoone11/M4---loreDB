@@ -145,7 +145,7 @@ body {
 }
 
 a {
-    /* background-color: #FFFFFF; */
+    background-color: #FFFFFF;
     border: none;
     width: 100%;
     margin: 0 auto;
@@ -198,33 +198,43 @@ hr {
     justify-content: center;
     text-align: center;
     background-color: #FFFFFF;
-    width: 700px;
+    width: 100%;
     height: 50px;
     border: 2px solid #707070;
     border-radius: 6px;
     padding: 28px 10px;
 }
 
-.section-item h2{
+.section-item h2,
+.section-item a{
     flex: auto;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 .favicon{
-    width: 40px;
-    height: 40px;
-    background-color: fuchsia;
-    background-image: url(#);
-    background-size: 40px 40px;
+    width: 150px;
     justify-self: flex-start;
 }
 
 .tags {
-    width: 25%;
+    width: 35%;
 }
 
 .tags p {
     font-size: 0.6rem;
     color: #8A8A8A;
+}
+
+.edituni {
+    width: 20%;
+}
+
+.edituni a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin: auto 0;
+    padding: auto 0;
 }
 
 #content {

@@ -7,6 +7,6 @@
 <nav id="sidebar" class="border">
     <a href="/" id="homeBtn">Home</a>
     <a href="/createuni" id="createuniBtn">Create New</a>
-    <a href="" id="contentBtn">Content</a>
+    {{-- <a href="" id="contentBtn">Content</a> --}}
     <a href="/about" id="aboutBtn">About</a>
 </nav>

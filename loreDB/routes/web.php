@@ -24,6 +24,8 @@ Route::get('/about', 'App\Http\Controllers\PagesController@about');
 Route::get('/stories', 'App\Http\Controllers\StoriesController@index');
 Route::get('/stories/create', 'App\Http\Controllers\StoriesController@create');
 Route::get('/stories/{id}/edit', 'App\Http\Controllers\StoriesController@edit');
+Route::get('/story', 'App\Http\Controllers\PagesController@story');
+Route::get('/edituni', 'App\Http\Controllers\PagesController@edit');
 
 Route::resource('stories','App\Http\Controllers\StoriesController');
 Route::resource('pages','App\Http\Controllers\PagesController');

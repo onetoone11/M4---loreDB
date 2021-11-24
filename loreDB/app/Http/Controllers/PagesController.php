@@ -24,10 +24,8 @@ class PagesController extends Controller
      */
     public function index(){
         $universes = Universe::all();
-        return view('pages.index')->with('universes', $universes);
-
-        // $uni = DB::select('SELECT * FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id');
-        // return view('pages.index')->with('uni', $uni);
+        $genres = DB::select('SELECT * FROM universes JOIN uni_genres ON universes.id = uni_genres.uni_id JOIN genres ON uni_genres.genre_id = genres.id LIMIT 3');
+        return view('pages.index')->with('universes', $universes)->with('genres', $genres);  
     }
 
     /**
@@ -84,6 +82,47 @@ class PagesController extends Controller
                 $tags->timestamps = false;
                 $tags->save();
             }
+        }
+
+        return redirect('/pages');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $universes = Universes::find($id);
+
+        if (!isset($universes)){
+            return redirect('/pages');
+        }
+
+        return view('pages.edituni')->with('universes', $universes);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $uni = Universes::find($id);
+        $uni->name = $request->input('titleinput');
+        $uni->save();
+
+        $genreboxes = isset($_POST['genrebox']) ? $_POST['genrebox'] : array();
+        foreach ($genreboxes as $box) {
+            $genres = uni_genre::find($uni_id);
+            $genres->genre_id = $box;
+            $genres->timestamps = false;
+            $genres->save();
         }
 
         return redirect('/pages');
