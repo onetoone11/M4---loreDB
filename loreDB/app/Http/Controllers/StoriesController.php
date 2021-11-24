@@ -26,8 +26,11 @@ class StoriesController extends Controller
      */
     public function create()
     {
-        $title = 'Create New Story';
-        return view('stories.create')->with('title', $title);
+        $topics = DB::table('story_topics')->get();
+        $tags = DB::table('story_tags')->get();
+        $types = DB::table('story_types')->get();
+        // $universe_id = Universe::all();
+        return view('stories.create')->with('topics', $topics)->with('tags', $tags)->with('type', $types);
     }
 
     /**
@@ -39,6 +42,12 @@ class StoriesController extends Controller
     public function store(Request $request)
     {
         //
+
+        $this->validate($request, [
+            'text' => 'required',
+            'name' => 'required'
+        ]);
+
         $story = new Story;
         $story->text = $request->input('text');
         $story->name = $request->input('name');
@@ -82,9 +91,14 @@ class StoriesController extends Controller
      */
     public function edit($id)
     {
-        //
-        // $story = Story::find($id);
-        // return view
+        $story = Story::find($id);
+        
+        //Check if post exists before deleting
+        if (!isset($story)){
+            return redirect('/stories')->with('error', 'No Story Found');
+        }
+
+        return view('stories.edit')->with('story', $story);
     }
 
     /**
@@ -96,7 +110,15 @@ class StoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $story = Story::find($id);
+
+        $story->name = $request->input('name');
+        $story->text = $request->input('text');
+        $story->save();
+
+        return redirect('/stories')->with('success', 'story Updated');
+
+        // return "hello";
     }
 
     /**

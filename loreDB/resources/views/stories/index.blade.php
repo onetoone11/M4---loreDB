@@ -4,14 +4,13 @@
 <div id="main">
 
     <div id="main-content">
+        @include('inc.messages')
         <div class="section">
 
             <h1>Stories</h1>
 
             <hr>
-            <form class="storySearch">
-                <input type="search">
-            </form>
+            <div id="storySearch"></div>
             @if (count($stories) > 0)
             @foreach ($stories as $story)
                 <div class="section-item hover">

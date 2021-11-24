@@ -15,14 +15,13 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        @include('inc.messages')
         @yield('content')
     </div>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function () {
             $('.ckeditor').ckeditor();
         });
-    </script>
+    </script> --}}
     <script src="{{ asset('js/code.js') }}"></script>
     <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">

@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'App\Http\Controllers\PagesController@index');
-Route::post('/createuni', 'App\Http\Controllers\PagesController@createuni');
+Route::get('/createuni', 'App\Http\Controllers\PagesController@createuni');
 Route::get('/about', 'App\Http\Controllers\PagesController@about');
 // Route::get('/story', 'App\Http\Controllers\PagesController@stories');
 Route::get('/stories', 'App\Http\Controllers\StoriesController@index');
 Route::get('/stories/create', 'App\Http\Controllers\StoriesController@create');
+Route::get('/stories/{id}/edit', 'App\Http\Controllers\StoriesController@edit');
 
 Route::resource('stories','App\Http\Controllers\StoriesController');
-Route::resource('pages','App\Http\Controllers\UniversesController');
+Route::resource('pages','App\Http\Controllers\PagesController');
