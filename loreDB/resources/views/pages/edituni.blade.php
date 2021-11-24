@@ -6,9 +6,10 @@
         <div id="content">
             <form id="createUniverseForm" action="./pages" method="POST", enctype="multipart/form-data">
                 @csrf <!-- {{ csrf_field() }} -->
-                <p id="createTitle">Update New Universe</p>
+
+                <p id="createTitle">Edit Universe</p>
                 <label>
-                    Title<br>
+                    {{$uni->name}}<br>
                     <input type='text' id='titleinput' name='titleinput' placeholder="Title...">
                 </label>
 
