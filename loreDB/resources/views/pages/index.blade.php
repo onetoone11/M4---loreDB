@@ -12,15 +12,17 @@
             @if (count($universes) > 0)
             @foreach ($universes as $uni)
             
+            
                 <div class="section-item">
                     <a class="hover favicon" href="../stories/{{$uni->id}}/story"><h2>{{$uni->name}}</h2></a>
                     <div class="tags">
+                        
                         <h3>
-                            @foreach(
-                                $genres as $post)
-                                {{ $post->name }}
+                            @foreach($genres as $genre)
+                                {{ $genre->name }}
                             @endforeach
                         </h3>
+                        
                     </div>
                     <div class="tags">
                             <h3>
@@ -37,12 +39,12 @@
                     <div class="tags">
                         <p>created at: <br> {{$uni->created_at}}</>
                     </div>
-                    <div class="tags">
+                    {{-- <div class="tags">
                         <a class="hover edituni" href="/pages/{{$uni->id}}/edituni">Edit</a>
-                    </div>
+                    </div> --}}
                         
                 </div>
-           
+                
             @endforeach
         @else
             <p>No universes found</p>

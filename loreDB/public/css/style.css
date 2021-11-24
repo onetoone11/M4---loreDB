@@ -206,8 +206,11 @@ hr {
     padding: 28px 10px;
 }
 
-.section-item h2{
+.section-item h2,
+.section-item a{
     flex: auto;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 .favicon{
@@ -225,9 +228,14 @@ hr {
 }
 
 .edituni {
+    width: 20%;
+}
+
+.edituni a {
     text-decoration: none;
-    width: 20px;
-    font-size: 1rem;
+    font-size: 0.8rem;
+    margin: auto 0;
+    padding: auto 0;
 }
 
 #content {

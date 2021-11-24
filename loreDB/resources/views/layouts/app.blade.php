@@ -15,7 +15,6 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        @include('inc.messages')
         @yield('content')
     </div>
     <script type="text/javascript">
